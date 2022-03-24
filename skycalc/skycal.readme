@@ -1,0 +1,50 @@
+SKYCAL.TAR.Z -- Astronomical almanac calculator and calendar programs: V4
+
+	John Thorstensen
+	Dept. of Physics and Astronomy
+	Dartmouth College
+	Hanover, NH 03755
+
+	John.Thorstensen@dartmouth.edu
+
+
+To obtain from the NOAO FTP archive via INTERNET:
+
+	% ftp iraf.noao.edu (or 140.252.1.1)
+	login: anonymous
+	password: [email address]
+	ftp> cd contrib
+	ftp> binary
+	ftp> get skycal.tar.Z
+	ftp> quit
+
+To extract, compile, and link (under UNIX):
+
+	% zcat skycal.tar | tar xf -
+	% $cc skycalc.c -lm -o skycalc
+	% $cc skycalendar.c -lm -o skycalendar
+
+where $cc is a C compiler.  Note that skycalc.c requires an ANSI c-compiler
+as noted below.
+
+===========================================================================
+REVISIONS -- 1994 September --- bug fix (V4.1)
+
+Works around a problem with incorrect dates (all zeros) printed on
+Silcon Graphics and perhaps others.
+
+REVISIONS -- 1994 September version (V4)
+
+The calendar-printing program is unchanged from V3.  The calculator
+program is considerably revised; the most important revisions are:
+
+1) Can read a file of objects; user can then set to coordinates
+   of an object by name or have the object list sorted according
+   to a number of different criteria.  Very useful while observing.
+2) Can produce a log file of output results while running interactively.
+   [N. B. -- This feature requires a working ANSI c-compiler; the standard 
+   Sun "cc" compiler fails, and the ANSI version "acc" fails
+   because of a known compiler bug.  However, the Open Software
+   Foundation's "gcc" compiler *does* create working code for
+   sparcstations.  A binary version is distributed for those who
+   need it.]  

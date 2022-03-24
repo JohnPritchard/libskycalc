@@ -1,0 +1,18 @@
+To compile...
+
+export CC=gcc-mp-8
+export CXX=g++-mp-8
+export LDFLAGS="-L/opt/local/lib"
+make clean
+./configure
+make all
+sudo make install
+
+J.D.Pritchard
+2012-04-16
+================================================================================
+Installation
+============
+
+./configure
+make clean all install

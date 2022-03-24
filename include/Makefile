@@ -1,0 +1,80 @@
+# Makefile for libskycalc
+
+#  Copyright (C) 2000  J.D.Pritchard
+
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+CC = gcc-mp-8
+CFLAGS = -g -O2
+
+AR = ar
+AR_OPT = ruv
+RANLIB = ranlib
+INSTALL = /opt/local/bin/ginstall -c
+STRIP = strip
+RM = rm
+RMOPTS = -fv
+
+prefix = /usr/local
+exec_prefix = ${prefix}
+bindir = $(exec_prefix)/bin
+libdir = ${exec_prefix}/lib
+includedir = ${prefix}/include
+infodir = ${prefix}/info
+
+ifeq ($(HOST),w1d5tcs)
+  RMOPTS = -f
+else
+endif
+
+INCLUDES   = libskycalc.h
+
+SUBDIRS =
+
+all:
+
+install: $(INCLUDES)
+	 $(INSTALL) -m 0644 $(INCLUDES) $(includedir)
+
+uninstall:
+	 set -e ; for i in $(INCLUDES) ; do \
+	   $(RM) $(libdir)/$$i ;\
+	 done
+
+.PHONY: clean dep
+
+clean:
+	$(RM) $(RMOPTS) *.o
+
+realclean: clean
+	$(RM) $(RMOPTS) $(LIBA)
+	$(RM) $(RMOPTS) Makefile
+
+
+distclean:
+
+$(LIBA)		:  $(LIBO)
+	$(AR) $(AR_OPT) $(LIBA) $(LIBO)
+	$(RANLIB) $(LIBA)
+
+
+## Suffixes ##
+.c.o:
+	$(CC) -c $(INCLUDE) $(CFLAGS) $(GGDB) $(PG) $<
+
+dep:
+	gcc -MM -MG ${INCLUDE} *.cc > .depend
+
+-include .depend

@@ -1,0 +1,41 @@
+*skycalc*  -- astronomical calculator -- uses easy commands to
+   calculate such things as sidereal time, airmass, moon phase, 
+   twilight, precession, heliocentric corrections, planetary 
+   positions, and so on.  By and for professional observers.
+Program is in c, should port without effort to most machines.  
+   Comes with on-line help and complete manual (TeX and ps.)  
+Package also includes a program for printing an astronomical  
+   calendar (sunset, twilight, moon, etc.) for any site.
+
+REVISIONS -- 1994 September --- bug fix (V4.1)
+
+Works around a problem with incorrect dates (all zeros) printed on
+Silcon Graphics and perhaps others.
+
+REVISIONS -- 1994 September version (V4)
+
+The calendar-printing program is unchanged from V3.  The calculator
+program is considerably revised; the most important revisions are:
+
+1) Can read a file of objects; user can then set to coordinates
+   of an object by name or have the object list sorted according
+   to a number of different criteria.  Very useful while observing.
+2) Can produce a log file of output results while running interactively.
+   [N. B. -- This feature requires a working ANSI c-compiler; the standard 
+   Sun "cc" compiler fails, and the ANSI version "acc" fails
+   because of a known compiler bug.  However, the Open Software
+   Foundation's "gcc" compiler *does* create working code for
+   sparcstations.  A binary version is distributed for those who
+   need it.]  
+
+REVISIONS -- 1994 Feb. --- new version (V3)
+
+1) Can produce table of observability through an observing
+   season -- for an accurate `range of acceptable dates'.
+   Tabulates at new and full moon (hence shows dark/bright runs).
+2) Can set time and date from system clock; convenient while
+   observing.
+3) Revised startup sequence offers new (or rusty) users a 
+   fast tour of program -- volunteer test subjects (astronomers)
+   learn program in 10 minutes or less.
+
